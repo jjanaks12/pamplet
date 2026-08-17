@@ -24,18 +24,25 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <header className="flex items-center gap-3 border-b border-zinc-200 bg-white px-6 py-4">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/flag-removebg-preview.png" alt="Nepali Congress flag" className="h-8 w-auto" />
-          <span className="text-lg font-semibold text-zinc-800">Nepali Congress</span>
+        <header className="flex items-center justify-between gap-3 border-b border-zinc-200 bg-white px-6 py-4">
+          <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/flag-removebg-preview.png" alt="Nepali Congress flag" className="h-8 w-auto" />
+            <span className="text-lg font-semibold text-zinc-800">Nepali Congress</span>
+          </div>
+          <a href="tel:+9779841117580" className="text-sm text-zinc-600">
+            Contact us: +977 984-1117580
+          </a>
         </header>
 
         <div className="flex flex-1 flex-col">{children}</div>
 
         <footer className="flex items-center justify-center gap-2 border-t border-zinc-200 bg-white px-6 py-4 text-sm text-zinc-500">
           <span>Developed by</span>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/letslearn-new-logo.webp" alt="LetsLearn" className="h-5 w-auto" />
+          <a href="https://letslearn.asia/" target="_blank" rel="noopener noreferrer">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/letslearn-new-logo.webp" alt="LetsLearn" className="h-5 w-auto" />
+          </a>
         </footer>
       </body>
     </html>
