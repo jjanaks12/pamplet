@@ -2,26 +2,28 @@
 
 import { useState, type RefObject } from "react";
 import { downloadPosterPng } from "@/lib/export";
+import type { Template } from "@/lib/poster";
 
 type DownloadButtonProps = {
   posterRef: RefObject<HTMLDivElement | null>;
+  template: Template | null;
   name: string;
   disabled: boolean;
 };
 
-export default function DownloadButton({ posterRef, name, disabled }: DownloadButtonProps) {
+export default function DownloadButton({ posterRef, template, name, disabled }: DownloadButtonProps) {
   const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [downloaded, setDownloaded] = useState(false);
 
   async function handleClick() {
     const node = posterRef.current;
-    if (!node) return;
+    if (!node || !template) return;
     setDownloading(true);
     setError(null);
     setDownloaded(false);
     try {
-      await downloadPosterPng(node, name);
+      await downloadPosterPng(node, template, name);
       setDownloaded(true);
     } catch {
       setError("The poster couldn't be downloaded. Try again.");
